@@ -1,0 +1,23 @@
+<!-- Toolbar -->
+<mat-toolbar color="primary">
+  <span routerLink="/">Application Product</span>
+
+  <!-- This fills the remaining space of the current row -->
+  <span class="example-fill-remaining-space"></span>
+
+  <button mat-button [matMenuTriggerFor]="menu">Settings</button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item>Person Information</button>
+    <button mat-menu-item>Change Password</button>
+  </mat-menu>
+</mat-toolbar>
+
+<div class="container">
+  <div class="row justify-content-md-center">
+    <div style="width:100%;">
+      <mat-spinner [hidden]="!isLoading" style="margin:0 auto; z-index: 999; position: fixed;left: 0; right: 0;">
+      </mat-spinner>
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

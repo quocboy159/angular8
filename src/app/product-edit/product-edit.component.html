@@ -1,0 +1,55 @@
+<form [formGroup]="productEditForm">
+    <div class="form-group row">
+        <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">Name</label>
+        <mat-form-field class="col-sm-12">
+            <input matInput formControlName="name">
+            <mat-error
+                *ngIf="productEditForm.controls.name.invalid && (productEditForm.controls.name.dirty || productEditForm.controls.name.touched) && productEditForm.controls.name.errors.required">
+                Name is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group row">
+        <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">Start Date</label>
+        <mat-form-field class="col-sm-12">
+            <input matInput formControlName="startDate" [matDatepicker]="startDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="startDate"></mat-datepicker-toggle>
+            <mat-datepicker #startDate></mat-datepicker>
+            <mat-error
+                *ngIf="productEditForm.controls.startDate.invalid && (productEditForm.controls.startDate.dirty || productEditForm.controls.startDate.touched) && productEditForm.controls.startDate.errors.required">
+                Start Date is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group row">
+        <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">Expired Date</label>
+        <mat-form-field class="col-sm-12">
+            <input matInput formControlName="expiredDate" [matDatepicker]="expiredDate" placeholder="Choose a date">
+            <mat-datepicker-toggle matSuffix [for]="expiredDate"></mat-datepicker-toggle>
+            <mat-datepicker #expiredDate></mat-datepicker>
+            <mat-error
+                *ngIf="productEditForm.controls.expiredDate.invalid && (productEditForm.controls.expiredDate.dirty || productEditForm.controls.expiredDate.touched) && productEditForm.controls.expiredDate.errors.required">
+                Expired Date is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group row">
+        <label for="colFormLabelSm" class="col-sm-12 col-form-label col-form-label-sm">Image</label>
+        <mat-form-field class="col-sm-12">
+            <input matInput formControlName="url">
+            <img class="image" src="{{productEditForm.get('url').value}}" />
+            <mat-error
+                *ngIf="productEditForm.controls.url.invalid && (productEditForm.controls.url.dirty || productEditForm.controls.url.touched) && productEditForm.controls.url.errors.required">
+                Image is <strong>required</strong>
+            </mat-error>
+        </mat-form-field>
+    </div>
+
+    <div class="form-group row">
+        <button class="btn btn-primary" type="button" (click)="onSubmit()">Save</button>
+        <button class="btn btn-secondary" type="button" (click)="onReset()">Cancel</button>
+    </div>
+</form>
