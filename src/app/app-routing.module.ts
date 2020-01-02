@@ -1,27 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import { ProductListComponent } from './product-list/product-list.component';
-import { ProductEditComponent } from './product-edit/product-edit.component';
-import { ProductCreateComponent } from './product-create/product-create.component';
+import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 
 const routes: Routes = [
-  {
-    path: '',
-    component: ProductListComponent
-  },
-  {
-    path: 'products/:id',
-    component: ProductEditComponent
-  },
-  {
-    path: 'create-product',
-    component: ProductCreateComponent
-  }
+  { path: 'product', loadChildren: () => import(`./views/product/product.module`).then(m => m.ProductModule) }
 ];
 
+// https://itnext.io/how-to-optimize-angular-applications-99bfab0f0b7c
 @NgModule({
-  imports: [RouterModule.forRoot(routes)],
+  imports: [RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })],
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

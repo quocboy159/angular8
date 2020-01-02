@@ -2,15 +2,12 @@ import { Component, OnInit, OnDestroy, ViewChild, Injectable, OnChanges } from '
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatSort } from '@angular/material';
-import { Product } from '../models/product.model';
 import { Router } from "@angular/router"
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
-import {
-  RootStoreState,
-  ProductStoreSelectors
-} from '../root-store';
-import { loadProductsRequest } from '../root-store/product-store/actions';
+import { Product } from 'src/app/models/product.model';
+import { RootStoreState, ProductStoreSelectors } from 'src/app/root-store';
+import { loadProductsRequest } from 'src/app/root-store/product-store/actions';
 
 @Component({
   selector: 'app-product-list',
@@ -21,9 +18,9 @@ import { loadProductsRequest } from '../root-store/product-store/actions';
 
 @Injectable()
 export class ProductListComponent implements OnInit, OnDestroy {
-  private displayedColumns: string[] = ['id', 'name', 'startDate', 'expiredDate', 'url'];
-  private pageSizeOptions: number[] = [10, 50, 100];
-  private dataSource = new MatTableDataSource<Product>();
+  public displayedColumns: string[] = ['id', 'name', 'startDate', 'expiredDate', 'url'];
+  public pageSizeOptions: number[] = [10, 50, 100];
+  public dataSource = new MatTableDataSource<Product>();
   private products$: Observable<Product[]>;
   private error$: Observable<string>;
   private isLoading$: Observable<boolean>;

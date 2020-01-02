@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Store } from '@ngrx/store';
-import { RootStoreState } from '../root-store';
 import { Product } from 'src/app/models/product.model';
-import { addProductRequest } from '../root-store/product-store/actions';
+import { RootStoreState } from 'src/app/root-store';
+import { addProductRequest } from 'src/app/root-store/product-store/actions';
 
 @Component({
   selector: 'app-product-create',
@@ -12,7 +12,7 @@ import { addProductRequest } from '../root-store/product-store/actions';
   styleUrls: ['./product-create.component.scss']
 })
 export class ProductCreateComponent implements OnInit {
-  private productCreateForm: FormGroup;
+  public productCreateForm: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,

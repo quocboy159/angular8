@@ -1,16 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { ProductService } from '../services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Product } from '../models/product.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import {
-  RootStoreState,
-  ProductStoreSelectors,
-} from '../root-store';
 import { Store } from '@ngrx/store';
-
 import * as _moment from 'moment';
-import { editProductRequest } from '../root-store/product-store/actions';
+import { ProductService } from 'src/app/services/product.service';
+import { RootStoreState, ProductStoreSelectors } from 'src/app/root-store';
+import { Product } from 'src/app/models/product.model';
+import { editProductRequest } from 'src/app/root-store/product-store/actions';
 
 
 @Component({
@@ -21,7 +17,7 @@ import { editProductRequest } from '../root-store/product-store/actions';
 })
 
 export class ProductEditComponent implements OnInit {
-  private productEditForm: FormGroup;
+  public productEditForm: FormGroup;
 
   constructor(
     private productService: ProductService,

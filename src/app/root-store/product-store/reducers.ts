@@ -1,10 +1,10 @@
 import { productAdapter, initialProductState, State } from './state';
 import { Update } from '@ngrx/entity';
 import { Product } from 'src/app/models/product.model';
-import { createReducer, on } from '@ngrx/store';
+import { createReducer, on, Action } from '@ngrx/store';
 import * as productActions from './actions';
 
-export const productReducer = createReducer(
+const reducer = createReducer(
     initialProductState,
 
     on(productActions.loadProductsRequest, state => ({
@@ -76,3 +76,7 @@ export const productReducer = createReducer(
         }
     })
 );
+
+export function productReducer(state: State | undefined, action: Action) {
+    return reducer(state, action);
+}
